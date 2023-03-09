@@ -1,0 +1,46 @@
+
+when every you want to find the no of ways from one node to another node we can use dp
+
+
+src = 1  and  dest = 5  find the number of ways 
+
+
+dp[] = { 3 , 2 , 1 , 0, 1}
+
+
+from eg         
+               ans  =  3         
+                dfs(1)
+          /        \         \
+ ans 2   dfs(2)       dfs(4)     dfs(3) ans = 1
+  /       \           ans= 0
+  dfs(5)  dfs(3) ans = 1 
+  ans 1    \
+           dfs(5)
+           ans = 1      
+
+
+
+code 
+
+
+int dfs(vector<pair<int , int >>graph[] , vector<int>&dis , int src , int n , vector<int>&dp)
+    {
+        if(src == n)
+            return 1;
+
+        if(dp[src] != -1)
+            return dp[src];
+
+        int no_path = 0;
+
+        for(auto neig : graph[src])
+        {
+            if(dis[src] > dis[neig.first])
+            {
+                no_path = (no_path + dfs(graph , dis , neig.first , n , dp)) % mod;
+            }
+        }        
+
+        return dp[src] = no_path;
+    }
