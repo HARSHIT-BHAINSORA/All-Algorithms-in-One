@@ -44,3 +44,48 @@ int dfs(vector<pair<int , int >>graph[] , vector<int>&dis , int src , int n , ve
 
         return dp[src] = no_path;
     }
+
+
+
+ 2 ..
+
+
+
+ When even there is the question based on the graph or a question of tree (binary tree) which could be solved in the 
+ graph ways
+
+
+ -> difficult arise that how to create a adjList 
+ans -  always use map instead of vector because  map not required any sort of number of elements 
+    similar for the visited array -----> go through -> Burning tree Question
+
+    and tree -> graph -> dfs is efficent ****
+
+    like this 
+
+
+
+    // Graph     
+    unordered_map<Node* , vector<Node*>>graph;
+    int ans = 0;
+  
+    void builtgraph(Node *node , Node* parent , int target , Node* &target_node)
+    {
+        if(node == NULL)
+            return;
+            
+        
+        if(node->data == target)
+            target_node = node;
+        
+        // first case-> mai jab hum root mai hai  tho parent Null hai 
+        if(parent != NULL)
+        {
+            graph[parent].push_back(node);
+            graph[node].push_back(parent);
+        }
+        
+        builtgraph(node->left , node , target , target_node);
+        builtgraph(node->right , node , target , target_node);
+    }
+
