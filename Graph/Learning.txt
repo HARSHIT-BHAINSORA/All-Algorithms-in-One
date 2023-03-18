@@ -89,3 +89,20 @@ ans -  always use map instead of vector because  map not required any sort of nu
         builtgraph(node->right , node , target , target_node);
     }
 
+
+
+
+
+
+Q. we have a Binary linked list (consist of 0 and 1)
+
+1 - > 0 -> 1 -> 0
+    ans -> 10 
+
+
+Dividend = Divisor x Quotient + Remainder
+            2   X   pevDivided  + given(ll->data)
+
+
+
+
